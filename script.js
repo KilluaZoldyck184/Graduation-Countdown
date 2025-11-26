@@ -5,7 +5,7 @@
      * Configuration Constants
      */
     const CONFIG = {
-        GRADUATION_ISO: '2025-10-31T12:00:00', // Ensure this is ISO 8601 compliant
+        GRADUATION_ISO: '2025-12-31T12:00:00', // Ensure this is ISO 8601 compliant
         UPDATE_INTERVAL_MS: 1000,
         ANIMATION: {
             MAX_CONFETTI: 200,
