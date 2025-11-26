@@ -1,0 +1,288 @@
+:root {
+    --font-base: 'Montserrat', sans-serif;
+    --font-accent: 'Playfair Display', serif;
+
+    --color-text: #ffffff;
+    --color-accent-gold: #ffd700;
+
+    --gradient-start: #6a11cb;
+    --gradient-mid: #2575fc;
+    --gradient-end: #ec008c;
+
+    --glass-bg: rgba(0, 0, 0, 0.30);
+    --shadow-elev: 0 10px 30px rgba(0, 0, 0, 0.20);
+
+    --radius-s: 10px;
+    --radius-m: 16px;
+
+    --space-1: .25rem;
+    --space-2: .5rem;
+    --space-3: .75rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-base);
+    color: var(--color-text);
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid));
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-4);
+    justify-content: center;
+    /* vertical centering */
+}
+
+main {
+    width: 100%;
+    max-width: 900px;
+    margin-inline: auto;
+}
+
+h1 {
+    font-family: var(--font-accent);
+    font-size: clamp(2.25rem, 6vw, 3.5rem);
+    margin: 0 0 var(--space-2);
+    animation: fadeInDown .9s ease-out;
+}
+
+#countdown-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    margin: 0 0 var(--space-8);
+    opacity: .9;
+    animation: fadeInUp .9s ease-out .25s backwards;
+}
+
+h2 {
+    font-family: var(--font-accent);
+    font-size: clamp(2rem, 5.5vw, 3rem);
+    margin: 0 0 var(--space-4);
+}
+
+.countdown-section,
+.graduation-message {
+    background: var(--glass-bg);
+    backdrop-filter: blur(4px);
+    padding: clamp(var(--space-6), 4vw, var(--space-10));
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-elev);
+    width: 100%;
+    max-width: 900px;
+    margin-inline: auto;
+}
+
+.countdown-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(var(--space-6), 4vw, var(--space-8));
+}
+
+#countdown-header {
+    background: none;
+    backdrop-filter: none;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+}
+
+.countdown {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(var(--space-3), 2.2vw, var(--space-6));
+}
+
+.countdown__unit {
+    background: rgba(255, 255, 255, 0.10);
+    padding: clamp(var(--space-4), 2vw, var(--space-6));
+    min-width: 90px;
+    border-radius: var(--radius-s);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.countdown__value {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+    min-width: 2ch;
+    display: inline-block;
+    text-align: center;
+    font-size: clamp(2.1rem, 7vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.05;
+}
+
+.countdown__label {
+    margin-top: var(--space-2);
+    font-size: .7rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: .85;
+}
+
+.countdown__separator {
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: 700;
+    align-self: center;
+    line-height: 1;
+    animation: pulse 1.5s ease-in-out infinite;
+    user-select: none;
+    padding: 0 var(--space-1);
+}
+
+.graduation-message {
+    animation: fadeIn .9s ease-in;
+}
+
+.graduation-message h2 {
+    color: var(--color-accent-gold);
+}
+
+.graduation-message p {
+    font-size: clamp(1rem, 2.1vw, 1.25rem);
+    margin: 0 0 var(--space-4);
+}
+
+.graduation-message p:last-child {
+    margin-bottom: 0;
+}
+
+#graduation-message-title,
+#graduation-message-title:focus,
+#graduation-message-title:focus-visible {
+    outline: none;
+}
+
+.is-hidden {
+    display: none !important;
+}
+
+#confetti-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+:focus-visible {
+    outline: 3px solid var(--color-accent-gold);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+@media (max-width: 600px) {
+    .countdown__unit {
+        min-width: 70px;
+        padding: var(--space-4);
+    }
+
+    .countdown__value {
+        font-size: clamp(1.8rem, 10vw, 2.4rem);
+    }
+
+    .countdown__separator {
+        font-size: clamp(1.6rem, 9vw, 2.2rem);
+    }
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .countdown__separator {
+        animation: none;
+    }
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: .7;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: .7;
+    }
+}

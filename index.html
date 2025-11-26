@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>My Graduation Countdown</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <section id="countdown" class="countdown-section" role="group">
+            <header id="countdown-header" role="banner">
+                <h1>Almost There</h1>
+                <p id="countdown-subtitle" class="subtitle">Counting down to Graduation</p>
+            </header>
+
+            <ul class="countdown" role="timer">
+                <li class="countdown__unit">
+                    <span id="countdown-days" class="countdown__value">00</span>
+                    <span id="countdown-days-label" class="countdown__label">Days</span>
+                </li>
+                <li class="countdown__separator">:</li>
+                <li class="countdown__unit">
+                    <span id="countdown-hours" class="countdown__value">00</span>
+                    <span id="countdown-hours-label" class="countdown__label">Hours</span>
+                </li>
+                <li class="countdown__separator">:</li>
+                <li class="countdown__unit">
+                    <span id="countdown-minutes" class="countdown__value">00</span>
+                    <span id="countdown-minutes-label" class="countdown__label">Minutes</span>
+                </li>
+                <li class="countdown__separator">:</li>
+                <li class="countdown__unit">
+                    <span id="countdown-seconds" class="countdown__value">00</span>
+                    <span id="countdown-seconds-label" class="countdown__label">Seconds</span>
+                </li>
+            </ul>
+        </section>
+
+        <section id="graduation-message" class="graduation-message is-hidden" aria-live="polite" aria-atomic="true">
+            <h2 id="graduation-message-title" tabindex="-1">🎓 Congratulations, Dr. Ahmed Kamal! You've Graduated! 🎉</h2>
+            <p>Time to celebrate this new beginning!</p>
+            <p>You've reached an incredible milestone — it's time to celebrate your success!</p>
+            <p>From long nights of study to saving lives and healing hearts, your dedication has brought you here.</p>
+            <p>Soon, you'll walk across that stage, degree in hand, ready to take on the world and continue your noble journey in medicine.</p>
+            <p>Be proud, Dr. Ahmed. You've earned this moment!</p>
+        </section>
+    </main>
+
+    <canvas id="confetti-canvas"></canvas>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
